@@ -4,6 +4,7 @@ const hoursContainer = document.querySelector('#hours')
 const daysContainer = document.querySelector('#days')
 const nextYearContainer = document.querySelector('#year')
 const spinnerLoading = document.querySelector('#loading')
+const countDownContainer = document.querySelector('#countdown')
 
 const nextYear = new Date().getFullYear() + 1
 const newYearTime = new Date(`janeiro 01 ${nextYear} 00:00:00`)
@@ -23,8 +24,11 @@ const updateCountdown = () => {
     hoursContainer.textContent = hours < 10 ? '0' + hours : hours
     daysContainer.textContent = days < 10 ? '0' + days : days
 }
-
-setTimeout(() => {
+const setTimeOutDisplay = () => {
     spinnerLoading.remove()
-}, 1000)
+    countDownContainer.style.display = 'flex'
+}
+
+setTimeout(setTimeOutDisplay, 1000)
+
 setInterval(updateCountdown, 1000)
